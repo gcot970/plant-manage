@@ -1,0 +1,15 @@
+.login-box {
+    display: flex;
+    justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 10vw;
+gap: 3vw;
+
+}
+
+.input-boxes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
