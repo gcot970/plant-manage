@@ -5,6 +5,9 @@ function Login() {
   return (
     <div className="login-page">
       <div className="login-box">
+        <div className="login-section">
+
+       
         <p>Plant Pal</p>
         <div className="input-boxes">
           <label>Email</label>{" "}
@@ -17,6 +20,7 @@ function Login() {
         <button>Login</button>
 
         <button>Plant Your Roots</button>
+      </div>
       </div>
     </div>
   );
