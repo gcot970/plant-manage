@@ -2,6 +2,7 @@
 import './App.css';
 import React from "react"
 import Login from './pages/Login';
+import Landing from './pages/Landing.js';
 
 import {
   createBrowserRouter,
@@ -11,12 +12,13 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-  },
+    element: <Landing />,  },
   {
     path: "/login",
     element: <Login />,
-  }
+  },
+  
+  
 ]);
 
 function App() {
