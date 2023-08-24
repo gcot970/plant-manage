@@ -1,27 +1,33 @@
-import React from 'react';
-import './App.css';
-import SignupForm from './signupForm'; // Update the path as needed
+import React from "react";
+import SignupForm from "./signupForm"; // Update the path to match your file structure
+import "../signup.css";
 
-function App() {
+function Signup() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {/* Include the SignupForm component */}
-        <SignupForm />
-      </header>
+    <div className="signup-page">
+      <div className="signup-box">
+        <div className="signup-section">
+          <p>Plant Pal</p>
+          <div className="input-boxes">
+            <label>Name</label>
+            <input type="text" placeholder="Enter your name" />
+          </div>
+          <div className="input-boxes">
+            <label>Email</label>
+            <input type="text" placeholder="Enter your email" />
+          </div>
+          <div className="input-boxes">
+            <label>Password</label>
+            <input type="text" placeholder="Create a password" />
+          </div>
+          <button>Sign Up</button>
+          <button>Plant Your Roots</button>
+          {/* Include the SignupForm component */}
+          <SignupForm />
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default Signup;
