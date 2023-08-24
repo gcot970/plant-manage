@@ -1,0 +1,44 @@
+.signup-box {
+  height: 100vh;
+}
+
+.signup-section {
+  margin-top: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10vw;
+  gap: 3vw;
+  width: 30vw; /* Adjust width as needed */
+  background-color: rgba(255, 255, 255, 0.2); /* Use rgba for transparency */
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.signup-boxes {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7); /* Use rgba for transparency */
+  border: none;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.signup-page {
+  background-image: url("../assets/images/leafbkg.jpg");
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
