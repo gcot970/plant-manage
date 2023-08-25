@@ -5,13 +5,19 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Login from './pages/Login';
-import CalendarPage from './pages/calendarPage';
+import CalendarPage from './pages/calendarPage'; // Import the CalendarPage component
+import Landing from './pages/Landing.js';
+
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <div>Hello world!</div>,
-  },
+    path: "/",
+    element: <Landing />,  },
   {
     path: '/login',
     element: <Login />,

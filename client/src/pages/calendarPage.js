@@ -6,7 +6,6 @@ import moment from 'moment';
 const localizer = momentLocalizer(moment);
 
 const CalendarPage = () => {
-  // Define events state and addEvent function locally in CalendarPage
   const [events, setEvents] = useState([]);
 
   const addEvent = (newEvent) => {
@@ -29,7 +28,7 @@ const CalendarPage = () => {
 
   const handleSelectEvent = useCallback(
     (event) => {
-      window.alert(event.title); // Display event details on event click (optional)
+      window.alert(event.title); 
     },
     []
   );
@@ -71,7 +70,7 @@ CalendarPage.propTypes = {
       title: PropTypes.string,
     })
   ),
-  // No need to specify addEvent as a prop since it's defined locally
 };
 
 export default CalendarPage;
+
