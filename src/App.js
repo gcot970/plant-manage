@@ -2,6 +2,8 @@
 import './App.css';
 import React from "react"
 import Login from './pages/Login';
+import UserPage from './pages/UserPage';
+
 
 import {
   createBrowserRouter,
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/user",
+    element: <UserPage />,
   }
 ]);
 
