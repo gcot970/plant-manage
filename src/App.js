@@ -2,6 +2,7 @@
 import './App.css';
 import React from "react"
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 import {
   createBrowserRouter,
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup/>,
   }
 ]);
 
@@ -27,4 +32,4 @@ function App() {
   );
 }
 
-export default Signup;
+export default App;
