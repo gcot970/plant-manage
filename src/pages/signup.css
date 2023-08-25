@@ -1,34 +1,55 @@
 .signup-box {
   height: 100vh;
-}
-
-.signup-section {
-  margin-top: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 10vw;
-  gap: 3vw;
-  width: 30vw; /* Adjust width as needed */
-  background-color: rgba(255, 255, 255, 0.2); /* Use rgba for transparency */
+}
+
+.signup-section {
+  width: 100%;
+  max-width: 450px;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   color: white;
+  text-align: center;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
-.signup-boxes {
+.input-boxes {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 input {
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.7); /* Use rgba for transparency */
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
   border: none;
   margin-top: 10px;
   border-radius: 10px;
+  width: 100%;
+}
+
+.password-input {
+  position: relative;
+}
+
+.reveal-button {
+  position: absolute;
+  top: 70%;
+  right: 5px;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  line-height: 1;
+  height: 20px;
 }
 
 .signup-page {
@@ -42,3 +63,22 @@ input {
   justify-content: center;
   align-items: center;
 }
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.sign-up-button {
+  background-color: rgba(255, 255, 255, 0.3); /* Made darker */
+  border: none;
+  padding: 15px 30px; /* Made padding larger */
+  border-radius: 20px; /* Increased border-radius */
+  font-size: 1.25rem; /* Adjusted to larger font size */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat font */
+  color: white;
+  cursor: pointer;
+  margin-top: 30px; /* Lowered position */
+}
+

@@ -1,8 +1,8 @@
 
 import './App.css';
-import React from "react"
+import React from "react";
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Signup from "./pages/Signup";
 
 import {
   createBrowserRouter,
@@ -26,9 +26,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <div className="App">
+      <header className="App-header">
+        <Signup />
+      </header>
+    </div>
   );
 }
 
