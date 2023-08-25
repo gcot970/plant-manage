@@ -1,32 +1,29 @@
-import React from "react";
-import SignupForm from "./signupForm"; // Update the path to match your file structure
-import './css/signup.css';
 
-function Signup() {
+import './App.css';
+import React from "react"
+import Login from './pages/Login';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  }
+]);
+
+function App() {
   return (
-    <div className="signup-page">
-      <div className="signup-box">
-        <div className="signup-section">
-          <p>Plant Pal</p>
-          <div className="input-boxes">
-            <label>Name</label>
-            <input type="text" placeholder="Enter your name" />
-          </div>
-          <div className="input-boxes">
-            <label>Email</label>
-            <input type="text" placeholder="Enter your email" />
-          </div>
-          <div className="input-boxes">
-            <label>Password</label>
-            <input type="text" placeholder="Create a password" />
-          </div>
-          <button>Sign Up</button>
-          <button>Plant Your Roots</button>
-          {/* Include the SignupForm component */}
-          <SignupForm />
-        </div>
-      </div>
-    </div>
+    <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
   );
 }
 
