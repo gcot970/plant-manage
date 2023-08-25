@@ -1,6 +1,6 @@
 import React from "react";
 import SignupForm from "./signupForm"; // Update the path to match your file structure
-import "../signup.css";
+import './css/signup.css';
 
 function Signup() {
   return (
