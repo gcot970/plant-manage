@@ -7,6 +7,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Login from './pages/Login';
 import CalendarPage from './pages/calendarPage'; // Import the CalendarPage component
 import Landing from './pages/Landing.js';
+import NavTabs from './pages/NavTabs';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     path: '/calendar',
     element: (
       <div>
-        <h1>Schedule Watering</h1>
+        <NavTabs/>  
         <CalendarPage />
       </div>
     ),
