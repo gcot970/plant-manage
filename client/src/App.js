@@ -7,12 +7,18 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Login from './pages/Login';
 import MyCalendar from './components/MyCalendar'; // Import the MyCalendar component
 import CalendarPage from './pages/calendarPage'; // Import the CalendarPage component
+import Landing from './pages/Landing.js';
+
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <div>Hello world!</div>,
-  },
+    path: "/",
+    element: <Landing />,  },
   {
     path: '/login',
     element: <Login />,
