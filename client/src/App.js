@@ -8,12 +8,6 @@ import Login from './pages/Login';
 import CalendarPage from './pages/calendarPage'; // Import the CalendarPage component
 import Landing from './pages/Landing.js';
 
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
 const router = createBrowserRouter([
   {
     path: "/",
