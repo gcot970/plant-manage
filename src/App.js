@@ -5,8 +5,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Login from './pages/Login';
-import MyCalendar from './components/MyCalendar'; // Import the MyCalendar component
-import CalendarPage from './pages/calendarPage'; // Import the CalendarPage component
+import CalendarPage from './pages/calendarPage';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/calendar', // Define a new route for the calendar
+    path: '/calendar',
     element: (
       <div>
         <h1>Schedule Watering</h1>
@@ -29,23 +28,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  // Initialize the state for events data
-  const [events, setEvents] = useState([]);
-
-  // Function to add a new event
-  const addEvent = (event) => {
-    setEvents([...events, event]);
-  };
 
   return (
     <React.StrictMode>
       <RouterProvider router={router}>
         <div>
-          {/* Render the MyCalendar component and pass events and addEvent as props */}
-          <MyCalendar events={events} addEvent={addEvent} />
-
-          {/* Render the CalendarPage component and pass events as props */}
-          <CalendarPage events={events} />
+          <CalendarPage />
         </div>
       </RouterProvider>
     </React.StrictMode>
