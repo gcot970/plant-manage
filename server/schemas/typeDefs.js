@@ -6,6 +6,15 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
+    events: [UserEvent]
+  }
+
+  type UserEvent {
+    _id: ID
+    userId: ID
+    date: Date
+    time: String
+    event: String
   }
 
   type Auth {
@@ -14,8 +23,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
     me: Profile
   }
 

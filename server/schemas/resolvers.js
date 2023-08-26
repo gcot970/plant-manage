@@ -1,43 +1,73 @@
+const { AuthenticationError } = require('apollo-server-express');
+const user = require('./models/user'); 
+const UserEvent = require('./models/userEvent');
+
 const resolvers = {
-    Query: {
-      profiles: async () => {
-        return Profile.find();
-      },
-  
-      profile: async (parent, { profileId }) => {
-        return Profile.findOne({ _id: profileId });
-      },
-      // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-      me: async (parent, args, context) => {
-        if (context.user) {
-          return Profile.findOne({ _id: context.user._id });
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      },
+  Query: {
+    me: async (_, __, context) => {
+      if (context.user) {
+        return user.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-  
-    Mutation: {
-      addProfile: async (parent, { name, email, password }) => {
-        const profile = await Profile.create({ name, email, password });
-        const token = signToken(profile);
-  
-        return { token, profile };
-      },
-      login: async (parent, { email, password }) => {
-        const profile = await Profile.findOne({ email });
-  
-        if (!profile) {
-          throw new AuthenticationError('No profile with this email found!');
-        }
-  
-        const correctPw = await profile.isCorrectPassword(password);
-  
-        if (!correctPw) {
-          throw new AuthenticationError('Incorrect password!');
-        }
-  
-        const token = signToken(profile);
-        return { token, profile };
-      },
-    }}
-      module.exports = resolvers;
+
+    userEvents: async (_, __, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to access events.');
+      }
+
+      try {
+        const events = await UserEvent.find({ userId: context.user._id });
+        return events;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch user events.');
+      }
+    },
+  },
+
+  Mutation: {
+    adduser: async (_, { name, email, password }) => {
+      const user = await user.create({ name, email, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+
+    login: async (_, { email, password }) => {
+      const user = await user.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('No user with this email found!');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+
+    createUserEvent: async (_, { input }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to create events.');
+      }
+
+      try {
+        const event = await UserEvent.create({
+          userId: context.user._id,
+          ...input,
+        });
+        return event;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to create a user event.');
+      }
+    },
+  },
+};
+
+module.exports = resolvers;
