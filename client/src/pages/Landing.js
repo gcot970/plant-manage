@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import "./landing.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Landing() {
@@ -9,11 +10,12 @@ function Landing() {
         <div className="login-section">
 
        
-        <p>Plant Pal</p>
+        <h1>PlantPal</h1>
         
-        <button type="button" class="btn btn-success">Login</button>
+        <Link to="/login" className="btn btn-success">Login</Link>
 
-        <button type="button" class="btn btn-outline-success">Signup</button>
+
+        <Link to="/signup" className="btn btn-success">Signup</Link>
       </div>
       </div>
     </div>
