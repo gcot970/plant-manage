@@ -8,9 +8,13 @@ const localizer = momentLocalizer(moment);
 const CalendarPage = () => {
   const [events, setEvents] = useState([]);
 
-  const addEvent = (newEvent) => {
+  const addEvent = useCallback((newEvent) => {
     setEvents((prevEvents) => [...prevEvents, newEvent]);
-  };
+  }, []);
+
+  // const addEvent = (newEvent) => {
+  //   setEvents((prevEvents) => [...prevEvents, newEvent]);
+  // };
 
   const handleSelectSlot = useCallback(
     ({ start, end }) => {

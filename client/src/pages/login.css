@@ -17,10 +17,11 @@
   color: white;
 }
 
-.input-boxes {
+.form-input {
   display: flex;
   flex-direction: column;
   text-align: center;
+  
 }
 
 input {
@@ -40,4 +41,10 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.button{
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px
 }

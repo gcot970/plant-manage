@@ -1,10 +1,10 @@
 {
-  "name": "mern-shopping",
+  "name": "plant-manage",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server --ignore client",
+    "start": "react-scripts start",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",

@@ -1,0 +1,23 @@
+[
+    {
+      "name": "Ringo Star",
+      "email": "ringo@email.com",
+      "password": "password"
+    },
+    {
+      "name": "Jack Black",
+      "email": "jack@email.com",
+      "password": "password"
+    },
+    {
+      "name": "Steve Jobs",
+      "email": "steve@email.com",
+      "password": "password"
+    },
+    {
+      "name": "Bruce Springsteen",
+      "email": "bruce@email.com",
+      "password": "password"
+    }
+]
+    
