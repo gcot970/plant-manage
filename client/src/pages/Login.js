@@ -76,7 +76,7 @@ const Login = (props) => {
               >
                 Submit
               </button>
-              <Link to="/profile">
+              <Link to="/signup">
                 <button
                   className="button"
                   style={{ cursor: 'pointer' }}
