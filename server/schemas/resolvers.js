@@ -67,6 +67,69 @@ const resolvers = {
         throw new Error('Failed to create a user event.');
       }
     },
+    addPlant: async (_, { commonName, scientificName, nickname, watering }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to add a plant.');
+      }
+
+      try {
+        const newPlant = new Plant({
+          commonName,
+          scientificName,
+          nickname,
+          watering,
+        });
+
+        newPlant.userId = context.user._id;
+        await newPlant.save();
+        return newPlant;
+      } catch (error) {
+        throw new Error('Failed to create a new plant.');
+      }
+    },
+
+    deletePlant: async (_, { plantId }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to delete a plant.');
+      }
+
+      try {
+        const plant = await Plant.findById(plantId);
+        if (!plant) {
+          throw new Error('Plant not found.');
+        }
+        if (plant.userId.toString() !== context.user._id.toString()) {
+          throw new AuthenticationError('You are not authorized to delete this plant.');
+        }
+        await plant.delete();
+        return plant;
+      } catch (error) {
+        throw new Error('Failed to delete a plant.');
+      }
+    },
+    updatePlant: async (_, { plantId, nickname, lastWaterDate }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to update a plant.');
+      }
+
+      try {
+        const plant = await Plant.findById(plantId);
+        if (!plant) {
+          throw new Error('Plant not found.');
+        }
+        if (nickname !== undefined) {
+          plant.nickname = nickname;
+        }
+
+        if (lastWaterDate !== undefined) {
+          plant.lastWaterDate = lastWaterDate;
+        }
+        await plant.save();
+        return plant;
+      } catch (error) {
+        throw new Error('Failed to update plant!');
+      }
+    },
   },
 };
 
