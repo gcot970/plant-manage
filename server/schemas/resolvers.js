@@ -77,6 +77,7 @@ const resolvers = {
           commonName,
           scientificName,
           nickname,
+          img_url,
           watering,
         });
 

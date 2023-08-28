@@ -14,6 +14,7 @@ const typeDefs = gql`
     commonName: String
     scientificName: String
     nickname: String
+    img_url: String
     watering: String
     addedDate: Date
     firstWaterDate: Date

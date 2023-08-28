@@ -10,10 +10,8 @@ const plantSchema = new Schema({
         required: true,
     },
     nickname: String,
-    watering: {
-        type: String,
-        required: true,
-    },
+    img_url: String,
+    watering: String,
     addedDate: {
         type: Date,
         default: Date.now,
