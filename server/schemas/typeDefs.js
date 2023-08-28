@@ -9,6 +9,18 @@ const typeDefs = gql`
     events: [UserEvent]
   }
 
+  type Plant {
+    _id: ID
+    commonName: String
+    scientificName: String
+    nickname: String
+    img_url: String
+    watering: String
+    addedDate: Date
+    firstWaterDate: Date
+    lastWaterDate: Date
+  }
+
   type UserEvent {
     _id: ID
     userId: ID
@@ -38,6 +50,9 @@ const typeDefs = gql`
     date: String
     time: String
     event: String
+    addPlant(commonName: String!, scientificName: String!, nickname: String, watering: String!): Plant
+    deletePlant(plantId: ID!): Plant
+    updatePlant(plantId: ID!, nickname: String, lastWaterDate: Date): Plant
   }
 `;
 

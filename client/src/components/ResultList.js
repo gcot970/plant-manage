@@ -1,10 +1,3 @@
-import axios from 'axios';
-
-const search = (query) =>
-    axios.get(`https://perenual.com/api/species-list?page=1&q={query}&key=sk-P8Bu64e419d0d84221951`);
-
-export default search;
-
 //Search area
 
 import { useState, useEffect } from 'react';
@@ -26,7 +19,7 @@ const SearchResultContainer = () => {
 
     return (
         <div>
-            { pass results to ResultsList component to map over}
+            {''}
             <ResultList results={results}/>
         </div>
     );
