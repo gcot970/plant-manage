@@ -12,7 +12,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 // import Profile from './pages/Profile';
-// import Signup from './pages/Signup';
+import Signup from './pages/SignupPage';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
 import CalendarPage from './pages/calendarPage';
@@ -54,10 +54,10 @@ function App() {
                 path="/login" 
                 element={<Login />}
               />
-              {/* <Route 
+              <Route 
                 path="/signup" 
                 element={<Signup />}
-              /> */}
+              />
               {/* <Route 
                 path="/profile" 
                 element={<Profile />}
