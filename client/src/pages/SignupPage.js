@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import "./login.css";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from './utils/mutations.js';
+import { ADD_USER } from './utils/mutations.js';
 
-import Auth from './utils/auth.js';
 
 const SignupPage = (props) => {
-  const [formState, setFormState] = useState({ name: '', username: '', email: '', password: '' });
-  const [signup, { error, data }] = useMutation(ADD_PROFILE);
+  const [formState, setFormState] = useState({ name: '', email: '', password: '' });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -25,27 +24,23 @@ const SignupPage = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await signup({
+      const { data } = await addUser({
         variables: { ...formState },
       });
-
-      Auth.login(data.addProfile.token);
+      
+      // Clear form values upon successful signup
+      setFormState({
+        name: '',
+        email: '',
+        password: '',
+      });
+      
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    setFormState({
-        firstname: '',
-        lastname: '',
-        username: '',
-        email: '',
-        password: '',
-    });
   };
 
   return (
-
     <div className="login-page">
       <div className="login-box"><h1>Plant Pal</h1>
         <div className="login-section">
@@ -60,19 +55,11 @@ const SignupPage = (props) => {
                 className="form-input"
                 placeholder="Your name"
                 name="name"
-                type="text"
-                value={formState.firstname}
+                type="name"
+                value={formState.name}
                 onChange={handleChange}
               />
-              <input
-                className="form-input"
-                placeholder="Your username"
-                name="username"
-                type="text"
-                value={formState.username}
-                onChange={handleChange}
-              />
-
+             
               <input
                 className="form-input"
                 placeholder="Your email"
@@ -96,13 +83,13 @@ const SignupPage = (props) => {
               >
                 Submit
               </button>
-              <Link to="/profile">
+              <Link to="/login">
                 <button
                   className="button"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Plant Your Roots</button>
+                  Login</button>
               </Link>
             </form>
           )}

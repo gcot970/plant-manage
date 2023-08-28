@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from './utils/mutations.js';
 
@@ -9,6 +9,7 @@ import Auth from './utils/auth.js';
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -30,6 +31,10 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+
+      // Redirect to the home page upon successful login
+      console.log("redirecting to /searchpage")
+      navigate('/searchpage');
     } catch (e) {
       console.error(e);
     }
@@ -42,14 +47,12 @@ const Login = (props) => {
   };
 
   return (
-
     <div className="login-page">
       <div className="login-box"><h1>Plant Pal</h1>
         <div className="login-section">
-          {data ? (
+          {data && data.login ? (
             <p>
-              Success!
-              <Link to="/home">back to the homepage.</Link>
+              Success! You are logged in.
             </p>
           ) : (
             <form onSubmit={handleFormSubmit}>
@@ -80,9 +83,10 @@ const Login = (props) => {
                 <button
                   className="button"
                   style={{ cursor: 'pointer' }}
-                  type="submit"
+                  type="link"
                 >
-                  Plant Your Roots</button>
+                  Plant Your Roots
+                </button>
               </Link>
             </form>
           )}
