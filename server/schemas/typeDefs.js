@@ -27,9 +27,9 @@ scalar Date
   type UserEvent {
     _id: ID
     userId: ID
-    date: String
-    time: String
-    event: String
+    start: String
+    end: String
+    title: String
   }
 
   type Auth {

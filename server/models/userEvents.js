@@ -6,15 +6,15 @@ const userEventsSchema = new Schema({
     ref: 'User', // Reference to the User model for associating events with users
     required: true,
   },
-  date: {
+  start: {
     type: String, 
     required: true,
   },
-  time: {
+  end: {
     type: String, 
     required: true,
   },
-  event: {
+  title: {
     type: String,
     required: true,
   },

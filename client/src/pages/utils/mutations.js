@@ -22,3 +22,16 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const UPDATE_USER = gql`
+  mutation update($start: String!, $end: String!, $title: String!){
+    update(start: $start, end: $end, title: $title) {
+      token
+      user {
+        _id
+        name
+        userEvent
+      }
+    }
+  }
+
+`
