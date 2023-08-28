@@ -9,3 +9,18 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const PLANT_QUERY = gql`
+  query myPlants {
+    myPlants {
+      _id
+      commonName
+      scientificName
+      nickname
+      watering
+      addedDate
+      firstWaterDate
+      lastWaterDate
+    }
+  }
+`;

@@ -8,10 +8,10 @@ function NavTabs({ currentPage, handlePageChange }) {
       <ul class="nav justify-content-end nav-underline">
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#Home"
-            onClick={() => handlePageChange('Home')}
+            href="#searchpag"
+            onClick={() => handlePageChange('SearchPage')}
 
-            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === 'SearchPage' ? 'nav-link active' : 'nav-link'}
           >
             Home
           </a>
