@@ -2,7 +2,7 @@
   "name": "plant-manage",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "react-scripts start",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
