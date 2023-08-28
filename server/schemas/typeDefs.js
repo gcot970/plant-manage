@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
 
+
 const typeDefs = gql`
+scalar Date
+
   type User {
     _id: ID
     name: String
@@ -16,9 +19,9 @@ const typeDefs = gql`
     nickname: String
     img_url: String
     watering: String
-    addedDate: Date
-    firstWaterDate: Date
-    lastWaterDate: Date
+    addedDate: Date!
+    firstWaterDate: Date!
+    lastWaterDate: Date!
   }
 
   type UserEvent {
@@ -40,9 +43,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    adduser(name: String!, email: String!, password: String!): Auth
+    addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     createUserEvent(input: UserEventInput): UserEvent
+    addPlant(commonName: String!, scientificName: String!, nickname: String, watering: String!): Plant
+    deletePlant(plantId: ID!): Plant
+    updatePlant(plantId: ID!, nickname: String, lastWaterDate:  Date!): Plant
   }
 
   input UserEventInput {
@@ -50,10 +56,8 @@ const typeDefs = gql`
     date: String
     time: String
     event: String
-    addPlant(commonName: String!, scientificName: String!, nickname: String, watering: String!): Plant
-    deletePlant(plantId: ID!): Plant
-    updatePlant(plantId: ID!, nickname: String, lastWaterDate: Date): Plant
-  }
+   
+  } 
 `;
 
 module.exports = typeDefs;

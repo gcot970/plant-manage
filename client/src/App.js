@@ -20,7 +20,7 @@ import NavTabs from './pages/NavTabs';
 import SearchPage from './pages/SearchPage';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql', 
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -51,7 +51,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route
-                path="/home"
+                path="/searchpage"
                 element={
                   <div>
                     <NavTabs />

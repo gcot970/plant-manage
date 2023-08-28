@@ -2,8 +2,10 @@ const { AuthenticationError } = require('apollo-server-express');
 const User = require('../models/User'); 
 const UserEvent = require('../models/userEvents');
 const { signToken } = require('../utils/auth');
+const { GraphQLDateTime } = require('graphql-scalars');
 
 const resolvers = {
+  Date: GraphQLDateTime,
   Query: {
     me: async (_, __, context) => {
       if (context.user) {
@@ -28,7 +30,7 @@ const resolvers = {
   },
 
   Mutation: {
-    adduser: async (_, { name, email, password }) => {
+    addUser: async (_, { name, email, password }) => {
       const user = await User.create({ name, email, password });
       const token = signToken(user);
 
