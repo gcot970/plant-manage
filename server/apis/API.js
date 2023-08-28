@@ -7,29 +7,29 @@ export default search;
 
 //Search area
 
-import { useState, useEffect } from 'react';
-import ResultList from ' ';
+// import { useState, useEffect } from 'react';
+// import ResultList from ' ';
 
-import search from '../utils/API';
+// import search from '../utils/API';
 
-const SearchResultContainer = () => {
-    const [results, setResults] = useState([]);
+// const SearchResultContainer = () => {
+//     const [results, setResults] = useState([]);
 
-    const searchPerenual = async (query) => {
-        const response = await search(query);
-        setResults(response.data.data);
-    };
+//     const searchPerenual = async (query) => {
+//         const response = await search(query);
+//         setResults(response.data.data);
+//     };
 
-    useEffect(() => {
-        searchPerenual('flowerName');
-    }, []);
+//     useEffect(() => {
+//         searchPerenual('flowerName');
+//     }, []);
 
-    return (
-        <div>
-            { pass results to ResultsList component to map over}
-            <ResultList results={results}/>
-        </div>
-    );
-};
+//     return (
+//         <div>
+//             { pass results to ResultsList component to map over}
+//             <ResultList results={results}/>
+//         </div>
+//     );
+// };
 
-export default SearchResultContainer;
+// export default SearchResultContainer;
