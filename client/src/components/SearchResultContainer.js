@@ -11,7 +11,7 @@ const SearchResultContainer = () => {
     const [searchText, setSearchText] = useState('');
 
   // Method to get search results and set state
-  const searchGiphy = async (query) => {
+  const searchPerenual = async (query) => {
     const response = await search(query);
     setResults(response.data.data);
   };
@@ -21,7 +21,7 @@ const SearchResultContainer = () => {
   // We want to run this method when the component first loads so that we have images of plants to display
   // The second argument is the dependency array. This means that this method will only run when the component first loads
   useEffect(() => {
-    searchGiphy(searchText);
+    searchPerenual(searchText);
   }, [searchText]);
 
   return (
