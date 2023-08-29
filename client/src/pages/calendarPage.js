@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, Fragment } from 'react';
+import React, { useState, useCallback, useMemo, Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
@@ -44,6 +44,10 @@ const CalendarPage = () => {
     }),
     []
   );
+
+useEffect(()=> {
+  setEvents(events)
+},[events])
 
   return (
     <div>

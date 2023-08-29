@@ -22,6 +22,18 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const UPDATE_USER = gql`
+mutation CreateUserEvent($input: UserEventInput) {
+  createUserEvent(input: $input) {
+    events {
+      title
+      start
+      end
+    }
+  }
+}
+
+`
 
 export const ADD_PLANT = gql`
   mutation addPlant(
