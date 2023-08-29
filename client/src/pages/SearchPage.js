@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './searchPage.css'; 
+// import SearchResultContainer from '../components/SearchResultContainer';
+import ResultList from '../components/ResultList';
 
 function SearchPage() {
   // State to store user input
