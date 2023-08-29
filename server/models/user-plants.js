@@ -1,14 +1,8 @@
 const { Schema, model } = mongoose;
 
 const plantSchema = new Schema({
-    commonName: {
-        type: String,
-        required: true,
-    },
-    scientificName: {
-        type: String,
-        required: true,
-    },
+    commonName: String,
+    scientificName: String,
     nickname: String,
     img_url: String,
     watering: String,
