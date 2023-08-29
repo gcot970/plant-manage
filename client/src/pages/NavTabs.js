@@ -1,5 +1,6 @@
 import React from 'react';
 import "./navTabs.css";
+import { handleLogout } from '../components/handleLogout';
 
 
 function NavTabs({ currentPage, handlePageChange }) {
@@ -29,14 +30,19 @@ function NavTabs({ currentPage, handlePageChange }) {
         </li>
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#CalendarPage"
-            onClick={() => handlePageChange('CalendarPage')}
+            href="#calendar"
+            onClick={() => handlePageChange('Calendar')}
 
-            className={currentPage === 'CalendarPage' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === 'Calendar' ? 'nav-link active' : 'nav-link'}
           >
             Schedule Watering
           </a>
         </li>
+        <li className="nav-item">
+          <button onClick={handleLogout} className="nav-link logout-button">
+            Logout
+          </button>
+          </li>
       </ul>
     </nav >
   );
