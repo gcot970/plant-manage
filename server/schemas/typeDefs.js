@@ -27,8 +27,8 @@ scalar Date
   type UserEvent {
     _id: ID
     userId: ID
-    start: String
-    end: String
+    start: Date!
+    end: Date!
     title: String
   }
 
@@ -53,8 +53,8 @@ scalar Date
 
   input UserEventInput {
     userId: ID
-    start: String
-    end: String
+    start: Date!
+    end: Date!
     title: String
    
   } 
