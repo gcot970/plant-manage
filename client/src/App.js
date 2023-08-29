@@ -1,36 +1,42 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import Profile from './pages/ProfilePage';
-import Signup from './pages/SignupPage';
-import Login from './pages/Login';
-import Landing from './pages/Landing';
-import CalendarPage from './pages/calendarPage';
-import NavTabs from './pages/NavTabs';
-import SearchPage from './pages/SearchPage';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  redirect,
+} from "react-router-dom";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import Profile from "./pages/ProfilePage";
+import Signup from "./pages/SignupPage";
+import Login from "./pages/Login";
+import Landing from "./pages/Landing";
+import CalendarPage from "./pages/calendarPage";
+import NavTabs from "./pages/NavTabs";
+import SearchPage from "./pages/SearchPage";
+import auth from "./pages/utils/auth";
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql', 
+  uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -41,6 +47,10 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const handlePageChange = (pagename) => {
+    window.location.assign(`/${pagename}`);
+  };
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -50,21 +60,22 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+
               <Route
                 path="/searchpage"
                 element={
                   <div>
-                    <NavTabs />
+                    <NavTabs handlePageChange={handlePageChange} />
                     <SearchPage />
                   </div>
                 }
               />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<Profile  />} />
               <Route
                 path="/calendar"
                 element={
                   <div>
-                    <NavTabs />
+                    <NavTabs handlePageChange={handlePageChange} />
                     <CalendarPage />
                   </div>
                 }
