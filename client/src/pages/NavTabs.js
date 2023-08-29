@@ -8,10 +8,10 @@ function NavTabs({ currentPage, handlePageChange }) {
       <ul class="nav justify-content-end nav-underline">
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#searchpag"
-            onClick={() => handlePageChange('SearchPage')}
+            href="#SearchPage"
+            onClick={() => handlePageChange('Home')}
 
-            className={currentPage === 'SearchPage' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
           >
             Home
           </a>
@@ -28,10 +28,10 @@ function NavTabs({ currentPage, handlePageChange }) {
         </li>
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#Calendar"
-            onClick={() => handlePageChange('Calendar')}
+            href="#CalendarPage"
+            onClick={() => handlePageChange('CalendarPage')}
 
-            className={currentPage === 'Calendar' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === 'CalendarPage' ? 'nav-link active' : 'nav-link'}
           >
             Schedule Watering
           </a>

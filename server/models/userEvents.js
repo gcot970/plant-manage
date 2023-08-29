@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const userEventsSchema = new Schema({
   userId: {
@@ -20,6 +20,4 @@ const userEventsSchema = new Schema({
   },
 });
 
-const UserEvent = model('UserEvent', userEventsSchema);
-
-module.exports = UserEvent;
+module.exports = userEventsSchema;
