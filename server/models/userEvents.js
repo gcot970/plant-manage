@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const { Date } = require('mongoose');
 
 const userEventsSchema = new Schema({
   userId: {
@@ -6,20 +7,18 @@ const userEventsSchema = new Schema({
     ref: 'User', // Reference to the User model for associating events with users
     required: true,
   },
-  date: {
-    type: String, 
+  start: {
+    type: Date, 
     required: true,
   },
-  time: {
-    type: String, 
+  end: {
+    type: Date, 
     required: true,
   },
-  event: {
+  title: {
     type: String,
     required: true,
   },
 });
 
-const UserEvent = model('UserEvent', userEventsSchema);
-
-module.exports = UserEvent;
+module.exports = userEventsSchema;

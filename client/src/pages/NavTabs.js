@@ -1,5 +1,6 @@
 import React from 'react';
 import "./navTabs.css";
+import { handleLogout } from '../components/handleLogout';
 
 
 function NavTabs({ currentPage, handlePageChange }) {
@@ -8,10 +9,11 @@ function NavTabs({ currentPage, handlePageChange }) {
       <ul class="nav justify-content-end nav-underline">
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#searchpag"
+
+            href="#searchpage"
             onClick={() => handlePageChange('SearchPage')}
 
-            className={currentPage === 'SearchPage' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
           >
             Home
           </a>
@@ -28,7 +30,7 @@ function NavTabs({ currentPage, handlePageChange }) {
         </li>
         <li class="nav-item">
           <a class="nav-item nav-link active"
-            href="#Calendar"
+            href="#calendar"
             onClick={() => handlePageChange('Calendar')}
 
             className={currentPage === 'Calendar' ? 'nav-link active' : 'nav-link'}
@@ -36,6 +38,11 @@ function NavTabs({ currentPage, handlePageChange }) {
             Schedule Watering
           </a>
         </li>
+        <li className="nav-item">
+          <button onClick={handleLogout} className="nav-link logout-button">
+            Logout
+          </button>
+          </li>
       </ul>
     </nav >
   );

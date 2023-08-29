@@ -5,11 +5,18 @@ export const QUERY_ME = gql`
     me {
       _id
       name
+      events{
+        _id
+        start
+        end
+        title
+      }
       
     }
   }
 `;
 
+ 
 export const PLANT_QUERY = gql`
   query myPlants {
     myPlants {
@@ -21,6 +28,17 @@ export const PLANT_QUERY = gql`
       addedDate
       firstWaterDate
       lastWaterDate
+    }
+  }
+`;
+
+export const CALENDAR_EVENTS_QUERY = gql`
+  query calendarEvents {
+    userEvents {
+      _id
+      start
+      end
+      title
     }
   }
 `;
