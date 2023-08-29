@@ -5,11 +5,13 @@ export const QUERY_ME = gql`
     me {
       _id
       name
+      events
       
     }
   }
 `;
 
+ 
 export const PLANT_QUERY = gql`
   query myPlants {
     myPlants {

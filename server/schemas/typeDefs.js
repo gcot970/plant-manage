@@ -27,9 +27,9 @@ scalar Date
   type UserEvent {
     _id: ID
     userId: ID
-    date: String
-    time: String
-    event: String
+    start: String
+    end: String
+    title: String
   }
 
   type Auth {
@@ -45,7 +45,7 @@ scalar Date
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createUserEvent(input: UserEventInput): UserEvent
+    createUserEvent(input: UserEventInput): User
     addPlant(commonName: String!, scientificName: String!, nickname: String, watering: String!): Plant
     deletePlant(plantId: ID!): Plant
     updatePlant(plantId: ID!, nickname: String, lastWaterDate:  Date!): Plant
@@ -53,9 +53,9 @@ scalar Date
 
   input UserEventInput {
     userId: ID
-    date: String
-    time: String
-    event: String
+    start: String
+    end: String
+    title: String
    
   } 
 `;
