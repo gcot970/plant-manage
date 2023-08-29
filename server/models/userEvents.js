@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose');
+const { Date } = require('mongoose');
 
 const userEventsSchema = new Schema({
   userId: {
@@ -7,11 +8,11 @@ const userEventsSchema = new Schema({
     required: true,
   },
   start: {
-    type: String, 
+    type: Date, 
     required: true,
   },
   end: {
-    type: String, 
+    type: Date, 
     required: true,
   },
   title: {
