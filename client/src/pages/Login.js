@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Link, useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from './utils/mutations.js';
+import { Link, redirect, useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "./utils/mutations.js";
 
-import Auth from './utils/auth.js';
+import Auth from "./utils/auth.js";
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
 
@@ -33,27 +33,25 @@ const Login = (props) => {
       Auth.login(data.login.token);
 
       // Redirect to the home page upon successful login
-      console.log("redirecting to /searchpage")
-      navigate('/searchpage');
+      console.log("redirecting to /searchpage");
     } catch (e) {
       console.error(e);
     }
 
     // clear form values
     setFormState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
   return (
     <div className="login-page">
-      <div className="login-box"><h1>Plant Pal</h1>
+      <div className="login-box">
+        <h1>Plant Pal</h1>
         <div className="login-section">
           {data && data.login ? (
-            <p>
-              Success! You are logged in.
-            </p>
+            <p>Success! You are logged in.</p>
           ) : (
             <form onSubmit={handleFormSubmit}>
               <input
@@ -74,7 +72,7 @@ const Login = (props) => {
               />
               <button
                 className="button"
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 type="submit"
               >
                 Submit
@@ -82,7 +80,7 @@ const Login = (props) => {
               <Link to="/signup">
                 <button
                   className="button"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   type="link"
                 >
                   Plant Your Roots
@@ -92,14 +90,12 @@ const Login = (props) => {
           )}
 
           {error && (
-            <div className="my-3 p-3 bg-danger text-white">
-              {error.message}
-            </div>
+            <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
           )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;

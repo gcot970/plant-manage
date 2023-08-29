@@ -3,6 +3,7 @@ import PlantCard from './PlantCard';
 import { useMutation } from '@apollo/client';
 import { DELETE_PLANT } from './utils/mutations';
 
+//plant array does not exist needs to be connected to db, error at line 28 
 const MyPlantList = ({ plants }) => {
     const [deletePlantMutation] = useMutation(DELETE_PLANT);
 
@@ -17,6 +18,8 @@ const MyPlantList = ({ plants }) => {
             console.error(`Error deleting plant: ${error.message}`);
         }
     };
+
+
 
     return (
         <div className="container">
