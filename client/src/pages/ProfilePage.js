@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlantCard from './PlantCard';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { DELETE_PLANT, ADD_PLANT } from './utils/mutations';
+import { QUERY_ME, PLANT_QUERY } from './utils/querys';
 import AddPlantForm from './PlantForm';
 
-const ProfilePage = ({ plants }) => {
+const ProfilePage = () => {
   const [deletePlantMutation] = useMutation(DELETE_PLANT);
-  // Initialize plantsList as an empty array if plants is initially undefined
-  const [plantsList, setPlantsList] = useState(plants || []);
+  const [plantsList, setPlantsList] = useState([]);
+  const { data: userData } = useQuery(QUERY_ME);
+  const { data: plantsData } = useQuery(PLANT_QUERY);
+
+  useEffect(() => {
+    if (plantsData && plantsData.myPlants) {
+      setPlantsList(plantsData.myPlants);
+    }
+  }, [plantsData]);
 
   const handleDeletePlant = async (plant) => {
     try {
@@ -31,10 +39,14 @@ const ProfilePage = ({ plants }) => {
     setPlantsList((prevPlants) => [...prevPlants, newPlant]);
   };
 
+  const userId = userData?.me?._id;
+
   return (
     <div className="container">
       <div className="row">
-       
+        <div className="col-md-4 mb-4">
+          <AddPlantForm onPlantAdded={handlePlantAdded} userId={userId} />
+        </div>
         <div className="col-md-8">
           <h1 className="my-4">My Plants</h1>
           {plantsList && plantsList.length > 0 ? (

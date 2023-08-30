@@ -38,12 +38,14 @@ export const ADD_PLANT = gql`
     $scientificName: String
     $nickname: String
     $watering: String
+    $userId: ID
   ) {
     addPlant(
       commonName: $commonName
       scientificName: $scientificName
       nickname: $nickname
       watering: $watering
+      userId: $userID
     ) {
       _id
       commonName
