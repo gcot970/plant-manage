@@ -1,25 +1,24 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const { Date } = require('mongoose');
 
 const userEventsSchema = new Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     ref: 'User', // Reference to the User model for associating events with users
     required: true,
   },
-  date: {
-    type: Date, // Assuming you want to store dates as actual Date objects
+  start: {
+    type: Date, 
     required: true,
   },
-  time: {
-    type: String, // You can use a string to store time, or a separate Date field for full datetime
+  end: {
+    type: Date, 
     required: true,
   },
-  event: {
+  title: {
     type: String,
     required: true,
   },
 });
 
-const UserEvent = model('UserEvent', userEventsSchema);
-
-module.exports = UserEvent;
+module.exports = userEventsSchema;

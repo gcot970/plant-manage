@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Link, redirect, useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "./utils/mutations.js";
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from './utils/mutations.js';
 
-import Auth from "./utils/auth.js";
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-  const navigate = useNavigate();
+const SignupPage = (props) => {
+  const [formState, setFormState] = useState({ name: '', email: '', password: '' });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -26,34 +24,42 @@ const Login = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
-
-      Auth.login(data.login.token);
-
-      // Redirect to the home page upon successful login
-      console.log("redirecting to /searchpage");
+      
+      // Clear form values upon successful signup
+      setFormState({
+        name: '',
+        email: '',
+        password: '',
+      });
+      
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    setFormState({
-      email: "",
-      password: "",
-    });
   };
 
   return (
     <div className="login-page">
-      <div className="login-box">
-        <h1>Plant Pal</h1>
+      <div className="login-box"><h1>Plant Pal</h1>
         <div className="login-section">
-          {data && data.login ? (
-            <p>Success! You are logged in.</p>
+          {data ? (
+            <p>
+              Success!
+              <Link to="/">back to the homepage.</Link>
+            </p>
           ) : (
             <form onSubmit={handleFormSubmit}>
+                <input
+                className="form-input"
+                placeholder="Your name"
+                name="name"
+                type="name"
+                value={formState.name}
+                onChange={handleChange}
+              />
+             
               <input
                 className="form-input"
                 placeholder="Your email"
@@ -72,30 +78,31 @@ const Login = (props) => {
               />
               <button
                 className="button"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
                 type="submit"
               >
                 Submit
               </button>
-              <Link to="/signup">
+              <Link to="/login">
                 <button
                   className="button"
-                  style={{ cursor: "pointer" }}
-                  type="link"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
                 >
-                  Plant Your Roots
-                </button>
+                  Login</button>
               </Link>
             </form>
           )}
 
           {error && (
-            <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+            <div className="my-3 p-3 bg-danger text-white">
+              {error.message}
+            </div>
           )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default SignupPage;
