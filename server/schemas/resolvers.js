@@ -103,7 +103,7 @@ const resolvers = {
           scientificName: args.scientificName,
           nickname: args.nickname,
           watering: args.watering,
-          userId: context.user._id, // Assuming you associate the plant with the user
+          userId: context.user._id, 
         });
 
         await newPlant.save();
