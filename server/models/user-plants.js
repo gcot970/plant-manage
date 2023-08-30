@@ -1,4 +1,4 @@
-const { Schema, model } = mongoose;
+const { Schema, model } = require('mongoose');
 
 const plantSchema = new Schema({
     commonName: String,

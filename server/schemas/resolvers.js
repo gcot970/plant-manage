@@ -28,6 +28,20 @@ const resolvers = {
         throw new Error('Failed to fetch user events.');
       }
     },
+    myPlants: async (_, __, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to view your plants.');
+      }
+    
+      try {
+        const plants = await Plant.find({ userId: context.user._id });
+        return plants;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch user plants.');
+      }
+    },
+    
   },
 
   Mutation: {
