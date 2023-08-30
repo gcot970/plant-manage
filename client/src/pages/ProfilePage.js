@@ -6,7 +6,8 @@ import AddPlantForm from './PlantForm';
 
 const ProfilePage = ({ plants }) => {
   const [deletePlantMutation] = useMutation(DELETE_PLANT);
-  const [plantsList, setPlantsList] = useState(plants);
+  // Initialize plantsList as an empty array if plants is initially undefined
+  const [plantsList, setPlantsList] = useState(plants || []);
 
   const handleDeletePlant = async (plant) => {
     try {
@@ -16,6 +17,7 @@ const ProfilePage = ({ plants }) => {
 
       console.log(`Plant deleted: ${data.deletePlant._id}`);
 
+      // Update the state to remove the deleted plant
       setPlantsList((prevPlants) =>
         prevPlants.filter((p) => p._id !== plant._id)
       );
@@ -25,15 +27,14 @@ const ProfilePage = ({ plants }) => {
   };
 
   const handlePlantAdded = (newPlant) => {
+    // Update the state to include the newly added plant
     setPlantsList((prevPlants) => [...prevPlants, newPlant]);
   };
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-4 mb-4">
-          <AddPlantForm onPlantAdded={handlePlantAdded} />
-        </div>
+       
         <div className="col-md-8">
           <h1 className="my-4">My Plants</h1>
           {plantsList && plantsList.length > 0 ? (
@@ -47,6 +48,10 @@ const ProfilePage = ({ plants }) => {
           ) : (
             <p>No plants available.</p>
           )}
+        </div> 
+        
+        <div className="col-md-4 mb-4">
+          <AddPlantForm onPlantAdded={handlePlantAdded} />
         </div>
       </div>
     </div>

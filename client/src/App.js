@@ -70,7 +70,12 @@ function App() {
                   </div>
                 }
               />
-              <Route path="/profile" element={<Profile  />} />
+              <Route path="/profile" element={
+                  <div>
+                    <NavTabs handlePageChange={handlePageChange} />
+                    <Profile />
+                  </div>
+                } />
               <Route
                 path="/calendar"
                 element={
