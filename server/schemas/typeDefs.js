@@ -19,9 +19,9 @@ scalar Date
     nickname: String
     img_url: String
     watering: String
-    addedDate: Date!
-    firstWaterDate: Date!
-    lastWaterDate: Date!
+    addedDate: Date
+    firstWaterDate: Date
+    lastWaterDate: Date
   }
 
   type UserEvent {
@@ -46,7 +46,7 @@ scalar Date
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     createUserEvent(input: UserEventInput): User
-    addPlant(commonName: String!, scientificName: String!, nickname: String, watering: String!): Plant
+    addPlant(commonName: String, scientificName: String, nickname: String, watering: String): Plant
     deletePlant(plantId: ID!): Plant
     updatePlant(plantId: ID!, nickname: String, lastWaterDate:  Date!): Plant
   }

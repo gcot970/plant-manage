@@ -36,10 +36,10 @@ mutation Mutation($input: UserEventInput) {
 
 export const ADD_PLANT = gql`
   mutation addPlant(
-    $commonName: String!
-    $scientificName: String!
+    $commonName: String
+    $scientificName: String
     $nickname: String
-    $watering: String!
+    $watering: String
   ) {
     addPlant(
       commonName: $commonName
