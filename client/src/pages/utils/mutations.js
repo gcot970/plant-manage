@@ -62,7 +62,7 @@ export const ADD_PLANT = gql`
 export const DELETE_PLANT = gql`
   mutation deletePlant($plantId: ID!) {
     deletePlant(plantId: $plantId) {
-      _id
+      plantId
     }
   }
 `;
