@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PLANT } from './utils/mutations';
+import "./plantForm.css"
 
 const PlantForm = ({ onPlantAdded }) => {
   const [formData, setFormData] = useState({

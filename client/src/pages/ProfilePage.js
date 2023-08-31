@@ -5,6 +5,7 @@ import { DELETE_PLANT, ADD_PLANT } from './utils/mutations';
 import { PLANT_QUERY } from './utils/querys';
 import AddPlantForm from './PlantForm';
 
+
 const ProfilePage = () => {
   const [deletePlantMutation] = useMutation(DELETE_PLANT);
   const [plantsList, setPlantsList] = useState([]);
@@ -39,14 +40,16 @@ const ProfilePage = () => {
     setPlantsList((prevPlants) => [...prevPlants, newPlant]);
   };
 
-  return (
+  return ( 
+  
   <div className="container">
+    <h1 className="my-4">My Plants</h1>
     <div className="row">
       <div className="col-md-4 mb-4">
         <AddPlantForm onPlantAdded={handlePlantAdded} />
       </div>
       <div className="col-md-8">
-        <h1 className="my-4">My Plants</h1>
+       
         <div className="row">
           {plantsList.map((plant) => (
             <div className="col-md-4 mb-4" key={plant._id}>
