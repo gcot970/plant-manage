@@ -40,7 +40,6 @@ scalar Date
   type Query {
     me: User
     userEvents: [UserEvent]
-    myPlants: [Plant]
   }
 
   type Mutation {
