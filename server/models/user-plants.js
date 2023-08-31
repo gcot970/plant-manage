@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-const { Schema, model } = require("mongoose");
-=======
 const { Schema, model } = require('mongoose');
->>>>>>> a04cc1e367005a224ff4a3c4ee0ceb9f8737db7e
 
 const plantSchema = new Schema({
     commonName: String,

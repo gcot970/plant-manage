@@ -11,6 +11,7 @@
     align-items: center; /* Center horizontally */
     padding-top: 20px; /* Add some top padding for spacing */
     min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+    color: white;
 }
 
 .search-container {

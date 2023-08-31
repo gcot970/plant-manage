@@ -39,14 +39,11 @@ const ProfilePage = () => {
     setPlantsList((prevPlants) => [...prevPlants, newPlant]);
   };
 
-  const userId = userData?.me?._id;
+  // const userId = userData?.me?._id;
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-4 mb-4">
-          <AddPlantForm onPlantAdded={handlePlantAdded} userId={userId} />
-        </div>
         <div className="col-md-8">
           <h1 className="my-4">My Plants</h1>
           {plantsList && plantsList.length > 0 ? (
