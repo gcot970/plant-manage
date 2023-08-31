@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import PlantCard from './PlantCard';
 import { useMutation, useQuery } from '@apollo/client';
 import { DELETE_PLANT, ADD_PLANT } from './utils/mutations';
-import { QUERY_ME, PLANT_QUERY } from './utils/querys';
+import { PLANT_QUERY } from './utils/querys';
 import AddPlantForm from './PlantForm';
 
 const ProfilePage = () => {
   const [deletePlantMutation] = useMutation(DELETE_PLANT);
   const [plantsList, setPlantsList] = useState([]);
-  const { data: userData } = useQuery(QUERY_ME);
-  const { data: plantsData } = useQuery(PLANT_QUERY);
-
+  
+  // Fetch plant data when the component mounts
+  const { data } = useQuery(PLANT_QUERY);
+  
+  // Update the plant list when data changes
   useEffect(() => {
-    if (plantsData && plantsData.myPlants) {
-      setPlantsList(plantsData.myPlants);
+    if (data && data.myPlants) {
+      setPlantsList(data.myPlants);
     }
-  }, [plantsData]);
+  }, [data]);
 
   const handleDeletePlant = async (plant) => {
     try {
@@ -37,31 +39,25 @@ const ProfilePage = () => {
     setPlantsList((prevPlants) => [...prevPlants, newPlant]);
   };
 
-  const userId = userData?.me?._id;
-
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-4 mb-4">
-          <AddPlantForm onPlantAdded={handlePlantAdded} userId={userId} />
-        </div>
-        <div className="col-md-8">
-          <h1 className="my-4">My Plants</h1>
-          {plantsList && plantsList.length > 0 ? (
-            <div className="row">
-              {plantsList.map((plant) => (
-                <div className="col-md-4 mb-4" key={plant._id}>
-                  <PlantCard plant={plant} onDeleteClick={handleDeletePlant} />
-                </div>
-              ))}
+  <div className="container">
+    <div className="row">
+      <div className="col-md-4 mb-4">
+        <AddPlantForm onPlantAdded={handlePlantAdded} />
+      </div>
+      <div className="col-md-8">
+        <h1 className="my-4">My Plants</h1>
+        <div className="row">
+          {plantsList.map((plant) => (
+            <div className="col-md-4 mb-4" key={plant._id}>
+              <PlantCard plant={plant} onDeleteClick={handleDeletePlant} />
             </div>
-          ) : (
-            <p>No plants available.</p>
-          )}
+          ))}
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default ProfilePage;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_PLANT } from './utils/mutations';
-import { QUERY_ME } from './utils/querys';
 
 const PlantForm = ({ onPlantAdded }) => {
   const [formData, setFormData] = useState({
@@ -11,7 +10,6 @@ const PlantForm = ({ onPlantAdded }) => {
     watering: '',
   });
 
-  const { data: userData } = useQuery(QUERY_ME);
   const [addPlantMutation] = useMutation(ADD_PLANT);
 
   const handleChange = (e) => {
@@ -23,10 +21,7 @@ const PlantForm = ({ onPlantAdded }) => {
     e.preventDefault();
     try {
       const { data } = await addPlantMutation({
-        variables: {
-          ...formData,
-          userId: userData?.me._id,
-        },
+        variables: { ...formData },
       });
       setFormData({
         commonName: '',
