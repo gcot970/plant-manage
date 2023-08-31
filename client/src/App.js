@@ -26,7 +26,7 @@ import SearchPage from "./pages/SearchPage";
 import auth from "./pages/utils/auth";
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_API || "http://localhost:3001/graphql",
+  uri: process.env.REACT_APP_GRAPHQL_API 
 });
 
 const authLink = setContext((_, { headers }) => {
